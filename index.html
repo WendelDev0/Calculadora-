@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Solar ☀️ Nova</title>
+    <meta name="description" content="Simule seu sistema fotovoltaico e descubra sua economia de energia solar." />
+    <link rel="stylesheet" href="ESTILO6.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="/" class="logo-link" aria-label="Ir para a página inicial">
+                <img src="assets/logo.png" alt="Logo da Solaris" class="logo-img" />
+            </a>
+            <h1>Descubra o Poder do Sol na Sua Conta de Luz</h1>
+            <p>
+                Preencha os dados abaixo e veja em instantes o quanto você pode
+                economizar com energia solar.
+            </p>
+        </header>
+
+        <main class="app-main">
+            <section id="formSection" class="form-section card">
+                <form id="formCalculadora" name="formCalculadora" onsubmit="return false;">
+                    <h2>Simule seu Sistema Fotovoltaico</h2>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="nomeCliente">Nome do Cliente:</label>
+                            <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Seu nome completo" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="telefoneCliente">Telefone (WhatsApp):</label>
+                            <input type="tel" id="telefoneCliente" name="telefoneCliente" placeholder="(99) 99999-9999" maxlength="15" required />
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="cep">CEP:</label>
+                            <input type="tel" id="cep" name="cep" placeholder="Apenas números" maxlength="8" pattern="[0-9]{8}" inputmode="numeric" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" id="cidade" name="cidade" readonly disabled />
+                        </div>
+                        <div class="input-group">
+                            <label for="estado">Estado:</label>
+                            <input type="text" id="estado" name="estado" readonly disabled />
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="consumoMedioKwh">Consumo Médio Mensal (kWh):</label>
+                            <input type="number" id="consumoMedioKwh" name="consumoMedioKwh" placeholder="Ex: 350" inputmode="numeric" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="tipoConsumidor">Tipo do Local de Instalação:</label>
+                            <select id="tipoConsumidor" name="tipoConsumidor" required>
+                                <option value="">Selecione</option>
+                                <option value="residencial">Residencial</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="rural">Rural</option>
+                                <option value="condominio">Condomínio</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group" id="concessionariaGroup" style="display: none;">
+                        <label for="concessionaria">Concessionária de Energia:</label>
+                        <select id="concessionaria" name="concessionaria" required></select>
+                    </div>
+
+                    <div id="mensagemErro" role="alert" style="color: red; display: none; margin-bottom: 1em;"></div>
+
+                    <button id="calcularBtn" class="btn-calcular" disabled aria-disabled="true" type="button">
+                        <span class="btn-text">Calcular Simulação</span>
+                    </button>
+
+                    <div class="lgpd-trigger-container">
+                        <a href="#" id="openLgpdModal">🔒 Seus dados estão protegidos. Saiba mais.</a>
+                    </div>
+                </form>
+            </section>
+            
+            <section id="animationSection" class="animation-section card" style="display: none;">
+                <div class="solar-animation-container">
+                    <div class="solar-icon sun">☀️</div>
+                    <div class="solar-rays"></div>
+                    <div class="solar-icon panel">
+                        <div class="panel-grid"></div>
+                    </div>
+                    <div class="battery">
+                        <div class="battery-level"></div>
+                    </div>
+                </div>
+                <p id="animationText" class="animation-text">Calculando sua economia...</p>
+            </section>
+
+            <section id="resultadoArea" class="resultado-section" style="display: none;" aria-live="polite" aria-atomic="true" tabindex="0">
+                <div id="resultadoConteudo"></div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2025 Sua Calculadora Solar. Simulação para fins ilustrativos.</p>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="lgpdModal" aria-hidden="true">
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h3 id="modalTitle">Nossa Política de Privacidade (LGPD)</h3>
+                <button class="modal-close" id="closeLgpdModal" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p>Nós levamos a sua privacidade a sério. Em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD)</strong>, queremos que você saiba como e por que usamos as suas informações.</p>
+                <p><strong>Quais dados coletamos?</strong><br>Coletamos seu nome, telefone e dados de consumo para criar uma simulação personalizada e precisa do seu sistema de energia solar.</p>
+                <p><strong>Como usamos seus dados?</strong><br>As informações são usadas exclusivamente por nossa equipe de especialistas para entrar em contato com você, apresentar a proposta detalhada da sua simulação e oferecer a melhor solução em energia solar para o seu perfil.</p>
+                <p><strong>Seus dados estão seguros.</strong><br>Não compartilhamos suas informações com terceiros para fins de marketing. Todos os dados são armazenados em um ambiente seguro e tratados com a máxima confidencialidade.</p>
+                <p>Ao clicar em "Calcular Simulação", você concorda com o uso dos seus dados para esta finalidade.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="whatsappModal" aria-hidden="true">
+        <div class="modal-container whatsapp-modal-container" role="dialog" aria-modal="true" aria-labelledby="whatsappModalTitle">
+            <div class="modal-header">
+                <h3 id="whatsappModalTitle">🌟 Parabéns! Sua simulação desbloqueou uma condição especial!</h3>
+                <button class="modal-close" id="closeWhatsappModal" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-content whatsapp-modal-content">
+                <p>Os resultados para a sua região são excelentes! Para <strong>garantir as condições</strong> desta simulação e receber uma análise técnica detalhada <strong>sem custo</strong> fale com nossa equipe hoje.</p>
+                <p class="oferta-limitada">Esta é uma oferta por tempo limitado para usuários da nossa calculadora!</p>
+                
+                <div id="timerOferta" class="timer-oferta"></div>
+
+                <a href="#" id="ctaWhatsappBtn" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" aria-hidden="true"><path d="M16.75 13.96c.25.13.4.38.4.66v.38c0 .41-.33.75-.75.75h-1.3c-.31 0-.6-.16-.76-.43l-.7-1.22c-.28-.48-.79-.77-1.34-.77h-.5c-.68 0-1.25.56-1.25 1.25v.43c0 .28-.22.5-.5.5h-2.5c-.28 0-.5-.22-.5-.5v-5c0-.28.22-.5.5-.5h2.5c.28 0 .5.22.5.5v.44c0 .68.56 1.25 1.25 1.25h.5c.55 0 1.06-.29 1.34-.77l.7-1.21c.16-.28.45-.44.76-.44h1.3c.41 0 .75.34.75.75v.38c0 .28-.15.53-.4.66zM21 12c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c1.99 0 3.8-.64 5.3-1.7l3.4 1.2c.4.14.84-.13.98-.54s.01-1.03-.52-1.2L19.3 17.3c1.1-1.5 1.7-3.3 1.7-5.3zm-9-7c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.14-7-7 3.14-7 7-7z"/></svg>
+                    <span>Quero Minha Condição Especial</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="lembreteFixoOferta" class="lembrete-oferta-fixo" aria-live="assertive">
+        <div class="lembrete-conteudo">
+            <span>🎁 Sua condição especial está expirando!</span>
+            <span id="lembreteTimer">02:00</span>
+        </div>
+    </div>
+
+    <script src="AP1.js"></script>
+</body>
+
+</html>
