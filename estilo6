@@ -1,0 +1,214 @@
+/* =================================================================== */
+/* ARQUIVO CSS COMPLETO E ESTÁVEL (ESTILO6.css)                        */
+/* VERSÃO: 15.1 - BANNER DE OFERTA NO TOPO                             */
+/* DESCRIÇÃO: Ajustado o CSS para que o banner da oferta apareça no    */
+/* topo da página em vez de no rodapé.                      */
+/* =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@700;900&display=swap');
+
+/* --- 1. VARIÁVEIS GLOBAIS --- */
+:root {
+    --cor-azul-principal: #061C70;
+    --cor-laranja-acento: #FF6600;
+    --cor-amarelo-acento: #FAD126;
+    --cor-branco-fundo: #F1EFEF;
+    --cor-branco-puro: #FFFFFF;
+    --cor-fundo-app: #F7F9FA;
+    --cor-fundo-card: var(--cor-branco-puro);
+    --cor-borda-geral: #E0E5EB;
+    --cor-texto-principal: #333333;
+    --cor-texto-secundario: #555555;
+    --cor-sombra: rgba(0, 0, 0, 0.08);
+    --borda-radius: 12px;
+}
+
+/* --- 2. ESTILOS DE BASE E LAYOUT --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo-app);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+}
+.app-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.card {
+    background: var(--cor-fundo-card);
+    border-radius: var(--borda-radius);
+    padding: 35px;
+    box-shadow: 0 5px 20px var(--cor-sombra);
+    margin-bottom: 30px;
+}
+
+/* --- 3. CABEÇALHO E FORMULÁRIO --- */
+.app-header {
+    background-color: var(--cor-azul-principal);
+    color: var(--cor-branco-fundo);
+    padding: 30px 40px;
+    border-radius: var(--borda-radius);
+    text-align: center;
+    margin-bottom: 30px;
+}
+.app-header .logo-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+.app-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.form-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: var(--cor-azul-principal);
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.input-group {
+    flex: 1;
+}
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--cor-azul-principal);
+}
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn-calcular {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cor-branco-fundo);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, var(--cor-laranja-acento), var(--cor-amarelo-acento), var(--cor-laranja-acento));
+    background-size: 200% auto;
+    transition: all 0.4s ease;
+}
+.btn-calcular:not(:disabled):hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+}
+.btn-calcular:disabled {
+    background-image: none;
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #888;
+}
+
+/* Estilo para campos com erro de validação */
+.input-group input.campo-invalido,
+.input-group select.campo-invalido {
+    border-color: #E53E3E; 
+    background-color: #FFF5F5;
+    box-shadow: 0 0 0 1px #E53E3E;
+}
+
+/* --- 4. ANIMAÇÃO DE CÁLCULO --- */
+.animation-section{padding:40px 20px;text-align:center}.solar-animation-container{display:flex;justify-content:center;align-items:center;gap:30px;margin-bottom:25px;position:relative;height:100px}.solar-icon{font-size:3.5rem}.sun{color:var(--cor-amarelo-acento);text-shadow:0 0 15px var(--cor-amarelo-acento);animation:pulse-sun 2s infinite ease-in-out}.panel-grid{width:60px;height:60px;background-size:20px 20px;background-image:linear-gradient(to right,var(--cor-azul-principal) 1px,transparent 1px),linear-gradient(to bottom,var(--cor-azul-principal) 1px,transparent 1px);border:2px solid var(--cor-azul-principal)}.solar-rays{position:absolute;left:40%;width:20%;height:5px;background:linear-gradient(to right,var(--cor-amarelo-acento),transparent);animation:shoot-ray 1.5s infinite;opacity:0}.battery{width:80px;height:40px;border:3px solid var(--cor-azul-principal);border-radius:6px;position:relative;padding:3px}.battery-level{height:100%;width:0%;background:linear-gradient(to right,var(--cor-amarelo-acento),var(--cor-laranja-acento));border-radius:3px;animation:fill-battery 4s linear forwards}.animation-text{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:700;color:var(--cor-azul-principal)}
+
+
+/* --- 5. SEÇÃO DE RESULTADOS --- */
+.resultado-section{display:none;background-color:transparent;padding:0;border:none}#resultadoConteudo{width:100%;display:flex;flex-wrap:wrap;gap:20px}.resultado-coluna-esquerda,.resultado-coluna-direita{flex:1;min-width:300px;display:flex;flex-direction:column;gap:20px}.resultado-item,.resultado-item-principal{background:var(--cor-branco-puro);padding:25px;border-radius:var(--borda-radius);box-shadow:0 5px 15px var(--cor-sombra);text-align:center}.resultado-item-principal{background-color:var(--cor-azul-principal);color:var(--cor-branco-puro)}.label,.label-destaque{display:block;font-weight:500;margin-bottom:8px;text-transform:uppercase}.resultado-item .label{color:var(--cor-azul-principal)}.resultado-item-principal .label-destaque{color:var(--cor-branco-fundo)}.valor-destaque-grande{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:var(--cor-amarelo-acento);display:block;line-height:1.2}.valor-destaque-media{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:700;color:var(--cor-texto-principal);display:block}.resultado-item-principal .valor-destaque-media{color:var(--cor-amarelo-acento)}.resultado-observacoes-geral{width:100%;background-color:#e9ecef;padding:15px;border-radius:8px;margin-top:5px;flex-basis:100%}
+
+/* --- 6. MODAIS E OFERTA --- */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(6,28,112,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);z-index:1000;display:flex;justify-content:center;align-items:center;padding:20px;visibility:hidden;opacity:0;transition:opacity .3s ease}.modal-overlay.visible{visibility:visible;opacity:1}.modal-container{background:var(--cor-branco-puro);border-radius:var(--borda-radius);box-shadow:0 10px 30px rgba(0,0,0,.2);width:100%;max-width:650px;padding:30px 40px;position:relative;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s ease-out}.modal-overlay.visible .modal-container{transform:translateY(0)}.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--cor-borda-geral);padding-bottom:15px;margin-bottom:25px;text-align:left}.modal-header h3{font-family:'Montserrat',sans-serif;color:var(--cor-azul-principal);font-size:1.5rem;font-weight:700}.modal-close{position:absolute;top:10px;right:15px;background:transparent;border:none;font-size:2.5rem;font-weight:300;line-height:1;cursor:pointer;color:var(--cor-texto-secundario);transition:color .3s ease,transform .3s ease}.modal-close:hover{color:var(--cor-laranja-acento);transform:rotate(90deg)}.modal-content p{margin-bottom:1.5em;line-height:1.7;color:var(--cor-texto-secundario)}.modal-content p>strong{display:block;color:var(--cor-azul-principal);font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px}.modal-content strong{color:var(--cor-texto-principal);font-weight:600}.whatsapp-modal-container{border-top:8px solid var(--cor-laranja-acento);text-align:center}.whatsapp-modal-container .modal-header h3{font-size:1.6rem;text-align:center;width:100%}.whatsapp-modal-content p{color:var(--cor-texto-secundario);font-size:1.1rem;margin:15px 0}.oferta-limitada{font-size:.9rem!important;font-style:italic;opacity:.8;margin-top:25px}
+
+/* Estilo para o timer da oferta dentro do modal */
+.timer-oferta {
+    background-color: #fff3e0;
+    border: 1px solid var(--cor-laranja-acento);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin: 20px auto 25px auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-texto-principal);
+    max-width: 350px;
+}
+.timer-oferta span {
+    color: var(--cor-laranja-acento);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-whatsapp{display:inline-flex;align-items:center;justify-content:center;gap:12px;background-color:#25D366;color:var(--cor-branco-puro);border:none;border-radius:50px;padding:15px 30px;font-family:'Montserrat',sans-serif;font-size:1.1rem;text-decoration:none;margin-top:20px;transition:transform .2s ease,box-shadow .2s ease}.btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 4px 15px rgba(37,211,102,.4)}
+
+/* [ALTERADO] Estilo para o banner fixo da oferta (agora no topo) */
+.lembrete-oferta-fixo {
+    position: fixed;
+    top: -100px; /* Começa escondido acima da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: linear-gradient(to right, var(--cor-azul-principal), #0a288a);
+    color: var(--cor-branco-puro);
+    padding: 15px 30px;
+    border-radius: 0 0 12px 12px; /* Cantos arredondados na parte de baixo */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para baixo */
+    z-index: 1001;
+    cursor: pointer;
+    transition: top 0.5s ease-in-out; /* Transição na propriedade 'top' */
+    display: none;
+}
+.lembrete-oferta-fixo.visible {
+    display: block;
+    top: 0; /* Aparece no topo */
+}
+.lembrete-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+#lembreteTimer {
+    background-color: var(--cor-laranja-acento);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+
+/* --- 7. ANIMAÇÕES (KEYFRAMES) --- */
+@keyframes pulse-sun{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}@keyframes fill-battery{from{width:0%}to{width:100%}}@keyframes shoot-ray{0%{transform:translateX(-50px);opacity:0}50%{opacity:1}100%{transform:translateX(50px);opacity:0}}
+
+/* --- 8. RESPONSIVIDADE (OTIMIZADA PARA MOBILE) --- */
+@media (max-width: 768px) {
+    .app-container{margin:20px auto}.app-header{padding:25px 20px;margin-bottom:20px}.app-header h1{font-size:1.6rem}.app-header p{font-size:.9rem}.card{padding:25px 20px}.form-section h2{font-size:1.4rem;margin-bottom:20px}.input-row{flex-direction:column;gap:15px;margin-bottom:15px}.input-group label{margin-bottom:5px;font-size:.9rem}.input-group input,.input-group select{padding:10px}.btn-calcular{padding:14px;font-size:1rem;margin-top:10px}.lgpd-trigger-container{margin-top:10px}.solar-animation-container{flex-direction:column;height:auto;gap:20px}.modal-container{padding:25px 20px}.modal-header h3{font-size:1.3rem}
+    .lembrete-oferta-fixo { width: 100%; border-radius: 0; }
+}
+
+/* --- 9. RODAPÉ --- */
+.app-footer{text-align:center;margin-top:30px;padding:15px;color:var(--cor-texto-secundario)}
